@@ -5,17 +5,28 @@ import type { movieData } from './movies';
 const id = useRoute().params.id as string;
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
-const { data: movieDetails, status, error } =await useFetch<movieData>(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`, {
+const { data: movieDetails, status, error } = await useFetch<movieData>(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`, {
   key: `/movies/${id}`,
-  pick: ['Title', 'imdbID', 'Poster'],
+  pick: ['Title', 'imdbID', 'Poster','Plot'],
   onResponse({ request, response }) {
     if (response._data.Error) {
       showError({ statusCode: 404, statusMessage: 'Page not found !!' })
     }
-
   }
 })
 
+useHead({
+  title: movieDetails.value?.Title,
+  meta: [{
+    name: 'description', content: movieDetails.value?.Plot
+  }, {
+    property: 'og:description', content: movieDetails.value?.Plot
+  }, {
+    property: 'og:image', content: movieDetails.value?.Poster
+  }, {
+    name: 'twitter_:card', content: `summary_large_image`
+  }]
+})
 
 // const { data: movieDetails, status, error, refresh, clear } = useAsyncData<movieData>(`/movies/${id}`, () => {
 //   return $fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`);

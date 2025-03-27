@@ -5,12 +5,9 @@
     <h2>Hello</h2>
     <button @click="increment">Increment</button>
     <p>Count: {{ count }}</p> -->
-    <nav style="display: flex; gap: 10px;">
-      <NuxtLink to="/">Home</NuxtLink>
-      <NuxtLink to="/movies">Movies</NuxtLink>
-      <NuxtLink to="https://vueschool.io/">School Video</NuxtLink>
-    </nav>
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
 
@@ -23,7 +20,11 @@
 // const increment = () => {
 //   count.value++;
 // };            
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? titleChunk : 'My movie Site';
+  }
+})
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
