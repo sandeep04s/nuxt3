@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import MovieCard from '~/components/movie/MovieCard.vue';
-import type { movieData } from './movies';
+import type { movieData } from '~/components/movie/movies';
 
 const id = useRoute().params.id as string;
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY;

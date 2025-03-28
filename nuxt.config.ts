@@ -11,6 +11,16 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/scripts',
     '@nuxt/ui',
-    '@nuxt/test-utils'
-  ]
+    '@nuxt/test-utils',
+    '@pinia/nuxt'
+   
+  ],
+  imports:{dirs:["stores"]},
+
+  pinia: {
+    storesDirs: ['./stores/**', './**/stores/**'],
+  },
+  alias:{
+    pinia:"/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs"
+  }
 })

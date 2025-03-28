@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Movie } from '~/pages/movies/movies';
+import type { Movie } from '~/components/movie/movies';
 
 defineProps<{ movie: Movie }>();
 </script>

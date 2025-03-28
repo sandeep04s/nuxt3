@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { Movie, OMDBResponse } from "@/pages/movies/movies";
+import type { Movie, OMDBResponse } from "~/components/movie/movies";
 const searchQuery=ref('page');
 const movies=ref<Movie[]>([]);
 const loading=ref<boolean>(false);
