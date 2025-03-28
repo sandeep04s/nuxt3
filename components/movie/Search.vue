@@ -11,7 +11,7 @@ const handleSearchQuery= async()=>{
   try {
     loading.value=true;
     const response: OMDBResponse = await $fetch(
-      `http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchQuery.value}`
+      `https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchQuery.value}`
     );
 
     if (response.Response === "True") {
